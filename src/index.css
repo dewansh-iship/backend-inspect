@@ -1,0 +1,76 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Glass + subtle backdrop */
+.glass { @apply bg-white/80 backdrop-blur-md shadow-glass border border-slate-200; }
+.navlink { @apply px-3 py-2 rounded-xl text-sm text-slate-600 hover:bg-slate-100; }
+.navlink.active { @apply bg-slate-800 text-white; }
+
+.radial-spot {
+  background:
+    radial-gradient(1200px 400px at 50% -200px, rgba(37, 99, 235, 0.10), transparent 60%),
+    radial-gradient(900px 300px at 0% -150px, rgba(99, 102, 241, 0.10), transparent 60%);
+}
+
+.section-title { @apply text-2xl font-extrabold text-slate-800; }
+.section-help  { @apply text-slate-600 mt-1 mb-4; }
+.card          { @apply rounded-2xl border border-slate-200 bg-white p-4 md:p-6; }
+
+/* --- Glass / Mirror helpers --- */
+.glass-neo {
+  background: linear-gradient(180deg, rgba(255,255,255,0.78), rgba(255,255,255,0.68));
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow:
+    0 10px 30px rgba(2, 12, 27, 0.06),
+    inset 0 1px 0 rgba(255,255,255,0.6);
+}
+
+.glass-chip {
+  background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(226,232,240,0.9);
+}
+
+/* Subtle moving sheen on the preview card */
+.sheen {
+  position: relative;
+  overflow: hidden;
+}
+.sheen::after {
+  content: "";
+  position: absolute;
+  inset: -200%;
+  background: conic-gradient(from 180deg at 50% 50%,
+      transparent 0deg,
+      rgba(255,255,255,0.35) 40deg,
+      transparent 80deg);
+  animation: sheen-move 6s linear infinite;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+@keyframes sheen-move {
+  0%   { transform: translateX(-20%) rotate(8deg); }
+  100% { transform: translateX(20%)  rotate(8deg); }
+}
+
+/* Mirror reflection for the image (WebKit/Chromium) */
+.mirror > img {
+  -webkit-box-reflect: below 0px linear-gradient(transparent, rgba(0,0,0,0.08));
+}
+
+/* Buttons */
+.btn-primary {
+  @apply inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-sky-600 text-white font-semibold shadow-lg shadow-sky-600/20 hover:bg-sky-500 transition;
+}
+.btn-ghost {
+  @apply inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/80 text-slate-700 border border-slate-200 hover:bg-white transition;
+}
+
+/* Tiny pill */
+.status-dot {
+  @apply inline-flex items-center gap-2 text-xs rounded-full px-2 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200;
+}

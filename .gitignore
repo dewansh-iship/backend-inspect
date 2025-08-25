@@ -1,7 +1,7 @@
 backend/.env
 frontend/.env
-.env
 *.env
 node_modules/
 frontend/build/
 backend/uploads/
+config.bat
